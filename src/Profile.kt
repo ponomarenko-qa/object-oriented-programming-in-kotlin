@@ -28,4 +28,10 @@ fun main() {
 
     println("1. Name: ${first.name}\nAge: ${first.age}\nHeight: ${first.height}\nWeight: ${first.weight}")
     println("2. Name: ${second.name}\nAge: ${second.age}\nHeight: ${second.height}\nWeight: ${second.weight}")
+
+    first.sayHello()
+    second.sayHello()
+
+    first.run()
+    second.run()
 }
