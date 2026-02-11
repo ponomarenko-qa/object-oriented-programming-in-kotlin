@@ -3,35 +3,35 @@ fun main() {
     val second = Person()
 
     print("Input 1st name: ")
-    first.name = readln()
+    val firstName = readln()
 
     print("Input 2nd name: ")
-    second.name = readln()
+    val secondName = readln()
 
     print("Input 1st age: ")
-    first.age = readln().toInt()
+    val firstAge = readln().toInt()
 
     print("Input 2nd age: ")
-    second.age = readln().toInt()
+    val secondAge = readln().toInt()
 
     print("Input 1st height: ")
-    first.height = readln().toInt()
+    val firstHeight = readln().toInt()
 
     print("Input 2nd height: ")
-    second.height = readln().toInt()
+    val secondHeight = readln().toInt()
 
     print("Input 1st weight: ")
-    first.weight = readln().toInt()
+    val firstWeight = readln().toInt()
 
     print("Input 2nd weight: ")
-    second.weight = readln().toInt()
+    val secondWeight = readln().toInt()
 
-    println("1. Name: ${first.name}\nAge: ${first.age}\nHeight: ${first.height}\nWeight: ${first.weight}")
-    println("2. Name: ${second.name}\nAge: ${second.age}\nHeight: ${second.height}\nWeight: ${second.weight}")
+    first.init(name = firstName, age = firstAge, height = firstHeight, weight = firstWeight)
+    second.init(name = secondName, age = secondAge, height = secondHeight, weight = secondWeight)
+
+    first.printInfo()
+    second.printInfo()
 
     first.sayHello()
     second.sayHello()
-
-    first.run()
-    second.run()
 }
