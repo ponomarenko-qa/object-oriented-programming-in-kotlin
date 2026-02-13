@@ -1,14 +1,7 @@
-class Rectangle {
-
-    val width: Int
-    val height: Int
-
-    constructor(): this(0)
-
-    constructor(width: Int, height: Int) {
-        this.width = width
-        this.height = height
-    }
+class Rectangle(
+    val width: Int = 0,
+    val height: Int = 0
+) {
 
     constructor(size: Int): this(size, size)
 
