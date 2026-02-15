@@ -1,4 +1,5 @@
 fun main() {
-    val consultant = Consultant(name = "Nick", age = 20)
-    consultant.sayHello()
+    val director = Director(name = "Andrey", age = 25)
+    val consultant = Consultant(name = "Max")
+    director.getConsultantToWork(consultant)
 }
