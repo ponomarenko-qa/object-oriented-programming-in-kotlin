@@ -1,3 +1,5 @@
+package profile
+
 fun main() {
     print("Input 1st name: ")
     val firstName = readln()
