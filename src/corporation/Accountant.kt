@@ -1,11 +1,14 @@
 package corporation
 
+import java.io.File
+
 class Accountant(
     name: String,
     age: Int
 ) : Worker(name, age) {
 
     val items = mutableListOf<ProductCard>()
+    val file = File("product_cards.txt")
 
     override fun work() {
         val operationCodes = OperationCode.entries
@@ -30,8 +33,30 @@ class Accountant(
     }
 
     fun showAllItems() {
-        for (item in items) {
-            item.printInfo()
+        val content = file.readText().trim()
+        val cardsAsString = content.split("\n")
+        for (cardAsString in cardsAsString) {
+            val properties = cardAsString.split("%")
+            val name = properties[0]
+            val brand = properties[1]
+            val price = properties[2].toInt()
+            val type = properties.last()
+            val productType = ProductType.valueOf(type)
+            val productCard = when (productType) {
+                ProductType.FOOD -> {
+                    val caloric = properties[3].toInt()
+                    FoodCard(name, brand, price, caloric)
+                }
+                ProductType.APPLIANCE -> {
+                    val wattage = properties[3].toInt()
+                    ApplianceCard(name, brand, price, wattage)
+                }
+                ProductType.SHOE -> {
+                    val size = properties[3].toFloat()
+                    ShoeCard(name, brand, price, size)
+                }
+            }
+            productCard.printInfo()
         }
     }
 
@@ -50,44 +75,32 @@ class Accountant(
         val productType = productTypes[productTypeIndex]
         print("Enter the product name: ")
         val productName = readln()
+        file.appendText("$productName%")
         print("Enter the product brand: ")
         val productBrand = readln()
+        file.appendText("$productBrand%")
         print("Enter the product price: ")
         val productPrice = readln().toInt()
-        val card = when (productType) {
+        file.appendText("$productPrice%")
+        when (productType) {
             ProductType.FOOD -> {
                 print("Enter the caloric: ")
                 val caloric = readln().toInt()
-                FoodCard(
-                    name = productName,
-                    brand = productBrand,
-                    price = productPrice,
-                    caloric = caloric
-                )
+                file.appendText("$caloric%")
             }
 
             ProductType.APPLIANCE -> {
                 print("Enter the wattage: ")
                 val wattage = readln().toInt()
-                ApplianceCard(
-                    name = productName,
-                    brand = productBrand,
-                    price = productPrice,
-                    wattage = wattage
-                )
+                file.appendText("$wattage%")
             }
 
             ProductType.SHOE -> {
                 print("Enter the size: ")
                 val size = readln().toFloat()
-                ShoeCard(
-                    name = productName,
-                    brand = productBrand,
-                    price = productPrice,
-                    size = size
-                )
+                file.appendText("$size%")
             }
         }
-        items.add(card)
+        file.appendText("${productType}\n")
     }
 }
