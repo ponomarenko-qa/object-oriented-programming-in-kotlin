@@ -4,10 +4,14 @@ class Director(
     id: Int,
     name: String,
     age: Int
-): Worker(id = id, name = name, age = age, Position.DIRECTOR) {
+): Worker(id = id, name = name, age = age, Position.DIRECTOR), Supplier {
 
     override fun work() {
         println("I'm drinking coffee")
+    }
+
+    override fun buyThings() {
+        println("My position is Director. I'm buying things...")
     }
 
     fun takeCoffee(assistant: Assistant) {

@@ -4,10 +4,18 @@ class Assistant(
     id: Int,
     name: String,
     age: Int = 0
-): Worker(id = id, name = name, age = age, Position.ASSISTANT) {
+): Worker(id = id, name = name, age = age, Position.ASSISTANT), Cleaner, Supplier {
 
     override fun work() {
         println("I'm answering the phone now...")
+    }
+
+    override fun clean() {
+        println("My position is Assistant. I'm cleaning workplace...")
+    }
+
+    override fun buyThings() {
+        println("My position is Assistant. I'm buying things...")
     }
 
     fun bringCoffee(drinkName: String = "Cappuccino", count: Int = 1): String {
