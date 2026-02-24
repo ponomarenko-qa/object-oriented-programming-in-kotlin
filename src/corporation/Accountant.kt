@@ -11,6 +11,10 @@ class Accountant(
     private val fileProductCards = File("product_cards.txt")
     private val fileWorkers = File("workers.txt")
 
+    override fun toString(): String {
+        return "Id: $id Name: $name Age: $age, Position: ${position.title}"
+    }
+
     override fun clean() {
         println("My position is Accountant. I'm cleaning workplace...")
     }
