@@ -7,6 +7,26 @@ abstract class Worker(
     val position: Position
 ) {
 
+    var salary: Int = 15000
+        set(value) {
+            if (value < field) {
+                println("The new salary is to small... ")
+            } else {
+                field = value
+            }
+        }
+//    fun setSalary(salary: Int) {
+//        if (salary < this.salary) {
+//            println("The new salary is to small... ")
+//        } else {
+//            this.salary = salary
+//        }
+//    }
+//
+//    fun getSalary(): Int {
+//        return this.salary
+//    }
+
     abstract fun work()
 
     fun printInfo() {
@@ -14,6 +34,6 @@ abstract class Worker(
     }
 
     override fun toString(): String {
-        return "Id: $id Name: $name Age: $age, Position: ${position.title}"
+        return "Id: $id Name: $name Age: $age, Position: ${position.title} Salary: $salary"
     }
 }
